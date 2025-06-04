@@ -7,14 +7,24 @@ import {
   fireEvent,
   screen,
   simulatePointerDevice,
-  focusVisible,
   programmaticFocusTriggersFocusVisible,
   reactMajor,
 } from '@mui/internal-test-utils';
+import describeSkipIf from '@mui/internal-test-utils/describeSkipIf';
 import { camelCase } from 'lodash/string';
 import Tooltip, { tooltipClasses as classes } from '@mui/material/Tooltip';
 import { testReset } from './Tooltip';
 import describeConformance from '../../test/describeConformance';
+
+async function focusVisible(element) {
+  await act(async () => {
+    element.blur();
+  });
+  fireEvent.keyDown(document.body, { key: 'Tab' });
+  await act(async () => {
+    element.focus();
+  });
+}
 
 describe('<Tooltip />', () => {
   const { clock, render } = createRenderer({ clock: 'fake' });
@@ -475,7 +485,7 @@ describe('<Tooltip />', () => {
       );
     });
 
-    it('should handle autoFocus + onFocus forwarding', function test() {
+    it('should handle autoFocus + onFocus forwarding', async function test() {
       if (/jsdom/.test(window.navigator.userAgent)) {
         // JSDOM doesn't support :focus-visible
         this.skip();
@@ -508,14 +518,7 @@ describe('<Tooltip />', () => {
     });
   });
 
-  describe('prop: delay', () => {
-    before(function beforeCallback() {
-      if (/jsdom/.test(window.navigator.userAgent)) {
-        // JSDOM doesn't support :focus-visible
-        this.skip();
-      }
-    });
-
+  describeSkipIf(/jsdom/.test(window.navigator.userAgent))('prop: delay', () => {
     it('should take the enterDelay into account', async () => {
       const { queryByRole } = render(
         <Tooltip title="Hello World" enterDelay={111}>
@@ -526,7 +529,7 @@ describe('<Tooltip />', () => {
       );
       simulatePointerDevice();
 
-      focusVisible(screen.getByRole('button'));
+      await focusVisible(screen.getByRole('button'));
       expect(queryByRole('tooltip')).to.equal(null);
 
       clock.tick(111);
@@ -549,7 +552,7 @@ describe('<Tooltip />', () => {
         </Tooltip>,
       );
       const children = screen.getByRole('button');
-      focusVisible(children);
+      await focusVisible(children);
 
       expect(screen.queryByRole('tooltip')).to.equal(null);
 
@@ -565,7 +568,7 @@ describe('<Tooltip />', () => {
 
       expect(screen.queryByRole('tooltip')).to.equal(null);
 
-      focusVisible(children);
+      await focusVisible(children);
       // Bypass `enterDelay` wait, use `enterNextDelay`.
       expect(screen.queryByRole('tooltip')).to.equal(null);
 
@@ -594,7 +597,7 @@ describe('<Tooltip />', () => {
       );
       simulatePointerDevice();
 
-      focusVisible(screen.getByRole('button'));
+      await focusVisible(screen.getByRole('button'));
       clock.tick(enterDelay);
 
       expect(screen.getByRole('tooltip')).toBeVisible();
@@ -962,14 +965,7 @@ describe('<Tooltip />', () => {
     });
   });
 
-  describe('focus', () => {
-    before(function beforeCallback() {
-      if (/jsdom/.test(window.navigator.userAgent)) {
-        // JSDOM doesn't support :focus-visible
-        this.skip();
-      }
-    });
-
+  describeSkipIf(/jsdom/.test(window.navigator.userAgent))('focus', () => {
     it('ignores base focus', async () => {
       render(
         <Tooltip enterDelay={0} title="Some information">
@@ -991,7 +987,7 @@ describe('<Tooltip />', () => {
       }
     });
 
-    it('opens on focus-visible', () => {
+    it('opens on focus-visible', async () => {
       const eventLog = [];
       render(
         <Tooltip enterDelay={0} onOpen={() => eventLog.push('open')} title="Some information">
@@ -1002,7 +998,7 @@ describe('<Tooltip />', () => {
 
       expect(screen.queryByRole('tooltip')).to.equal(null);
 
-      focusVisible(screen.getByRole('button'));
+      await focusVisible(screen.getByRole('button'));
 
       expect(screen.getByRole('tooltip')).toBeVisible();
       expect(eventLog).to.deep.equal(['focus', 'open']);
