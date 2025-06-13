@@ -163,6 +163,13 @@ export default function HomePage() {
       <Container maxWidth="lg" sx={{ py: 6 }}>
         {/* Hero Section */}
         <Box sx={{ textAlign: "center", mb: 8 }}>
+          <Button
+            variant="outlined"
+            onClick={() => navigate("/")}
+            sx={{ mb: 3 }}
+          >
+            ← Back to Marketing Page
+          </Button>
           <Typography
             variant="h2"
             component="h1"
