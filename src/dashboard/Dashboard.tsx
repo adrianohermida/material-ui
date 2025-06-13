@@ -11,6 +11,7 @@ import AppNavbar from "./components/AppNavbar";
 import Header from "./components/Header";
 import MainGrid from "./components/MainGrid";
 import SideMenu from "./components/SideMenu";
+import BackToHomeButton from "../components/BackToHomeButton";
 import AppTheme from "../shared-theme/AppTheme";
 import {
   chartsCustomizations,
@@ -30,6 +31,7 @@ export default function Dashboard(props: { disableCustomTheme?: boolean }) {
   return (
     <AppTheme {...props} themeComponents={xThemeComponents}>
       <CssBaseline enableColorScheme />
+      <BackToHomeButton />
       <Box sx={{ display: "flex" }}>
         <SideMenu />
         <AppNavbar />
