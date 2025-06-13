@@ -5,49 +5,35 @@ import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid";
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
-import AutoFixHighRoundedIcon from "@mui/icons-material/AutoFixHighRounded";
-import ConstructionRoundedIcon from "@mui/icons-material/ConstructionRounded";
-import QueryStatsRoundedIcon from "@mui/icons-material/QueryStatsRounded";
-import SettingsSuggestRoundedIcon from "@mui/icons-material/SettingsSuggestRounded";
-import SupportAgentRoundedIcon from "@mui/icons-material/SupportAgentRounded";
-import ThumbUpAltRoundedIcon from "@mui/icons-material/ThumbUpAltRounded";
+import PhoneAndroidIcon from "@mui/icons-material/PhoneAndroid";
+import SupportAgentIcon from "@mui/icons-material/SupportAgent";
+import SecurityIcon from "@mui/icons-material/Security";
+import StorefrontIcon from "@mui/icons-material/Storefront";
 
 const items = [
   {
-    icon: <SettingsSuggestRoundedIcon />,
-    title: "Adaptable performance",
+    icon: <PhoneAndroidIcon />,
+    title: "Experiência 100% responsiva",
     description:
-      "Our product effortlessly adjusts to your needs, boosting efficiency and simplifying your tasks.",
+      "Interface adaptável que funciona perfeitamente em desktop, tablet e mobile. Acesse seu escritório de qualquer lugar.",
   },
   {
-    icon: <ConstructionRoundedIcon />,
-    title: "Built to last",
+    icon: <SupportAgentIcon />,
+    title: "Suporte prioritário especializado",
     description:
-      "Experience unmatched durability that goes above and beyond with lasting investment.",
+      "Atendimento com especialistas jurídicos que entendem sua rotina. Suporte técnico e consultoria profissional.",
   },
   {
-    icon: <ThumbUpAltRoundedIcon />,
-    title: "Great user experience",
+    icon: <SecurityIcon />,
+    title: "Ambiente seguro e auditável",
     description:
-      "Integrate our product into your routine with an intuitive and easy-to-use interface.",
+      "Controle multiusuário avançado, trilha de auditoria completa e segurança bancária para proteger seus dados.",
   },
   {
-    icon: <AutoFixHighRoundedIcon />,
-    title: "Innovative functionality",
+    icon: <StorefrontIcon />,
+    title: "Marketplace jurídico integrado",
     description:
-      "Stay ahead with features that set new standards, addressing your evolving needs better than the rest.",
-  },
-  {
-    icon: <SupportAgentRoundedIcon />,
-    title: "Reliable support",
-    description:
-      "Count on our responsive customer support, offering assistance that goes beyond the purchase.",
-  },
-  {
-    icon: <QueryStatsRoundedIcon />,
-    title: "Precision in every detail",
-    description:
-      "Enjoy a meticulously crafted product where small touches make a significant impact on your overall experience.",
+      "Contrate serviços especializados, acesse modelos de documentos e encontre parceiros diretamente na plataforma.",
   },
 ];
 
@@ -77,18 +63,17 @@ export default function Highlights() {
             textAlign: { sm: "left", md: "center" },
           }}
         >
-          <Typography component="h2" variant="h4" gutterBottom>
-            Highlights
+          <Typography component="h2" variant="h4" sx={{ fontWeight: 700 }}>
+            Diferenciais que tornam o Lawdesk único
           </Typography>
-          <Typography variant="body1" sx={{ color: "grey.400" }}>
-            Explore why our product stands out: adaptability, durability,
-            user-friendly design, and innovation. Enjoy reliable customer
-            support and precision in every detail.
+          <Typography variant="body1" sx={{ opacity: 0.8 }}>
+            Recursos desenvolvidos especificamente para atender as necessidades
+            do mercado jurídico brasileiro.
           </Typography>
         </Box>
-        <Grid container spacing={2}>
+        <Grid container spacing={2.5}>
           {items.map((item, index) => (
-            <Grid size={{ xs: 12, sm: 6, md: 4 }} key={index}>
+            <Grid item xs={12} sm={6} md={3} key={index}>
               <Stack
                 direction="column"
                 component={Card}
@@ -102,12 +87,12 @@ export default function Highlights() {
                   backgroundColor: "grey.800",
                 }}
               >
-                <Box sx={{ opacity: "50%" }}>{item.icon}</Box>
+                <Box sx={{ opacity: 0.8 }}>{item.icon}</Box>
                 <div>
                   <Typography gutterBottom sx={{ fontWeight: "medium" }}>
                     {item.title}
                   </Typography>
-                  <Typography variant="body2" sx={{ color: "grey.400" }}>
+                  <Typography variant="body2" sx={{ opacity: 0.8 }}>
                     {item.description}
                   </Typography>
                 </div>
