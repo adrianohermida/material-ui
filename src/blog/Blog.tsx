@@ -6,12 +6,13 @@ import AppAppBar from "./components/AppAppBar";
 import MainContent from "./components/MainContent";
 import Latest from "./components/Latest";
 import Footer from "./components/Footer";
+import BackToHomeButton from "../components/BackToHomeButton";
 
 export default function Blog(props: { disableCustomTheme?: boolean }) {
   return (
     <AppTheme {...props}>
       <CssBaseline enableColorScheme />
-
+      <BackToHomeButton />
       <AppAppBar />
       <Container
         maxWidth="lg"
