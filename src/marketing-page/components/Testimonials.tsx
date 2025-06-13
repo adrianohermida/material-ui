@@ -58,23 +58,27 @@ const userTestimonials = [
 ];
 
 const TestimonialCard = styled(Box)(({ theme }) => ({
-  padding: theme.spacing(3),
-  backgroundColor: theme.palette.background.paper,
-  borderRadius: theme.spacing(1),
+  padding: theme.spacing(2.5),
+  backgroundColor: "transparent",
   border: "1px solid",
   borderColor: theme.palette.divider,
-  height: "100%",
+  borderRadius: theme.spacing(1),
+  height: "280px",
   display: "flex",
   flexDirection: "column",
   justifyContent: "space-between",
+  transition: "all 0.2s ease-in-out",
+  "&:hover": {
+    borderColor: theme.palette.primary.light,
+    boxShadow: theme.shadows[2],
+  },
 }));
 
 const CompanyLogo = styled(Typography)(({ theme }) => ({
-  fontSize: "12px",
-  fontWeight: 600,
+  fontSize: "13px",
+  fontWeight: 500,
   color: theme.palette.text.disabled,
-  letterSpacing: "0.1em",
-  textTransform: "uppercase",
+  letterSpacing: "0.05em",
 }));
 
 export default function Testimonials() {
@@ -82,20 +86,20 @@ export default function Testimonials() {
     <Container
       id="testimonials"
       sx={{
-        pt: { xs: 4, sm: 12 },
-        pb: { xs: 8, sm: 16 },
+        pt: { xs: 4, sm: 8 },
+        pb: { xs: 8, sm: 12 },
         position: "relative",
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
-        gap: { xs: 3, sm: 6 },
+        gap: { xs: 3, sm: 5 },
       }}
     >
       <Box
         sx={{
-          width: { sm: "100%", md: "60%" },
+          width: { sm: "100%", md: "70%" },
           textAlign: "center",
-          mb: 4,
+          mb: 2,
         }}
       >
         <Typography
@@ -105,6 +109,7 @@ export default function Testimonials() {
             color: "text.primary",
             fontWeight: 600,
             mb: 2,
+            fontSize: { xs: "1.75rem", md: "2.125rem" },
           }}
         >
           Testimonials
@@ -115,6 +120,8 @@ export default function Testimonials() {
             color: "text.secondary",
             fontSize: "1rem",
             lineHeight: 1.6,
+            maxWidth: "600px",
+            mx: "auto",
           }}
         >
           See what our customers love about our products. Discover how we excel
@@ -123,17 +130,22 @@ export default function Testimonials() {
         </Typography>
       </Box>
 
-      <Grid container spacing={3} sx={{ maxWidth: "1200px" }}>
+      <Grid container spacing={3} sx={{ maxWidth: "1000px", width: "100%" }}>
         {userTestimonials.map((testimonial, index) => (
           <Grid item xs={12} sm={6} md={4} key={index}>
             <TestimonialCard>
               <Typography
                 variant="body2"
                 sx={{
-                  color: "text.secondary",
-                  lineHeight: 1.6,
-                  mb: 3,
+                  color: "text.primary",
+                  lineHeight: 1.5,
+                  fontSize: "0.875rem",
+                  mb: 2,
                   flexGrow: 1,
+                  display: "-webkit-box",
+                  WebkitLineClamp: 6,
+                  WebkitBoxOrient: "vertical",
+                  overflow: "hidden",
                 }}
               >
                 {testimonial.testimonial}
@@ -144,6 +156,7 @@ export default function Testimonials() {
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "space-between",
+                  mt: "auto",
                 }}
               >
                 <Box sx={{ display: "flex", alignItems: "center", gap: 1.5 }}>
@@ -159,6 +172,7 @@ export default function Testimonials() {
                         fontWeight: 600,
                         color: "text.primary",
                         lineHeight: 1.2,
+                        fontSize: "0.875rem",
                       }}
                     >
                       {testimonial.name}
@@ -167,7 +181,8 @@ export default function Testimonials() {
                       variant="body2"
                       sx={{
                         color: "text.secondary",
-                        fontSize: "0.875rem",
+                        fontSize: "0.75rem",
+                        lineHeight: 1.2,
                       }}
                     >
                       {testimonial.occupation}
