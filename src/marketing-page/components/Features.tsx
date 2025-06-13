@@ -7,32 +7,59 @@ import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
 import { styled } from "@mui/material/styles";
 
-import DevicesRoundedIcon from "@mui/icons-material/DevicesRounded";
-import EdgesensorHighRoundedIcon from "@mui/icons-material/EdgesensorHighRounded";
-import ViewQuiltRoundedIcon from "@mui/icons-material/ViewQuiltRounded";
+import GavelIcon from "@mui/icons-material/Gavel";
+import AccountTreeIcon from "@mui/icons-material/AccountTree";
+import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
+import DescriptionIcon from "@mui/icons-material/Description";
+import PsychologyIcon from "@mui/icons-material/Psychology";
+import GroupsIcon from "@mui/icons-material/Groups";
 
 const items = [
   {
-    icon: <ViewQuiltRoundedIcon />,
-    title: "Dashboard",
+    icon: <GavelIcon />,
+    title: "Painel Jurídico",
     description:
-      "This item could provide a snapshot of the most important metrics or data points related to the product.",
+      "Automação completa de processos jurídicos com acompanhamento de prazos, petições e andamentos processuais integrados.",
     imageLight: `url("${import.meta.env.VITE_TEMPLATE_IMAGE_URL || "https://mui.com"}/static/images/templates/templates-images/dash-light.png")`,
     imageDark: `url("${import.meta.env.VITE_TEMPLATE_IMAGE_URL || "https://mui.com"}/static/images/templates/templates-images/dash-dark.png")`,
   },
   {
-    icon: <EdgesensorHighRoundedIcon />,
-    title: "Mobile integration",
+    icon: <AccountTreeIcon />,
+    title: "CRM Personalizado",
     description:
-      "This item could provide information about the mobile app version of the product.",
+      "Pipelines e funis customizáveis para gestão de clientes, prospects e oportunidades específicas do mercado jurídico.",
     imageLight: `url("${import.meta.env.VITE_TEMPLATE_IMAGE_URL || "https://mui.com"}/static/images/templates/templates-images/mobile-light.png")`,
     imageDark: `url("${import.meta.env.VITE_TEMPLATE_IMAGE_URL || "https://mui.com"}/static/images/templates/templates-images/mobile-dark.png")`,
   },
   {
-    icon: <DevicesRoundedIcon />,
-    title: "Available on all platforms",
+    icon: <AttachMoneyIcon />,
+    title: "Gestão Financeira",
     description:
-      "This item could let users know the product is available on all platforms, such as web, mobile, and desktop.",
+      "DRE jurídico integrado, controle de honorários, assinaturas recorrentes e faturamento automatizado.",
+    imageLight: `url("${import.meta.env.VITE_TEMPLATE_IMAGE_URL || "https://mui.com"}/static/images/templates/templates-images/devices-light.png")`,
+    imageDark: `url("${import.meta.env.VITE_TEMPLATE_IMAGE_URL || "https://mui.com"}/static/images/templates/templates-images/devices-dark.png")`,
+  },
+  {
+    icon: <DescriptionIcon />,
+    title: "Documentos Inteligentes",
+    description:
+      "Geração automática de petições, contratos e documentos jurídicos com assinatura eletrônica integrada.",
+    imageLight: `url("${import.meta.env.VITE_TEMPLATE_IMAGE_URL || "https://mui.com"}/static/images/templates/templates-images/dash-light.png")`,
+    imageDark: `url("${import.meta.env.VITE_TEMPLATE_IMAGE_URL || "https://mui.com"}/static/images/templates/templates-images/dash-dark.png")`,
+  },
+  {
+    icon: <PsychologyIcon />,
+    title: "IA Jurídica",
+    description:
+      "Copiloto automatizado com análise preditiva, sugestões inteligentes e automação de tarefas repetitivas.",
+    imageLight: `url("${import.meta.env.VITE_TEMPLATE_IMAGE_URL || "https://mui.com"}/static/images/templates/templates-images/mobile-light.png")`,
+    imageDark: `url("${import.meta.env.VITE_TEMPLATE_IMAGE_URL || "https://mui.com"}/static/images/templates/templates-images/mobile-dark.png")`,
+  },
+  {
+    icon: <GroupsIcon />,
+    title: "Comunidade Jurídica",
+    description:
+      "Marketplace integrado com parcerias, modelos de documentos e oportunidades reais de networking.",
     imageLight: `url("${import.meta.env.VITE_TEMPLATE_IMAGE_URL || "https://mui.com"}/static/images/templates/templates-images/devices-light.png")`,
     imageDark: `url("${import.meta.env.VITE_TEMPLATE_IMAGE_URL || "https://mui.com"}/static/images/templates/templates-images/devices-dark.png")`,
   },
@@ -149,17 +176,17 @@ export default function Features() {
           component="h2"
           variant="h4"
           gutterBottom
-          sx={{ color: "text.primary" }}
+          sx={{ color: "text.primary", fontWeight: 700 }}
         >
-          Product features
+          Recursos que impulsionam a advocacia moderna
         </Typography>
         <Typography
           variant="body1"
           sx={{ color: "text.secondary", mb: { xs: 2, sm: 4 } }}
         >
-          Provide a brief overview of the key features of the product. For
-          example, you could list the number of features, their types or
-          benefits, and add-ons.
+          Uma plataforma completa que integra todas as necessidades do seu
+          escritório jurídico, desde gestão de processos até inteligência
+          artificial, em um só lugar.
         </Typography>
       </Box>
       <Box
@@ -215,9 +242,20 @@ export default function Features() {
                     },
                   ]}
                 >
-                  {icon}
+                  <Box
+                    sx={{
+                      color:
+                        selectedItemIndex === index
+                          ? "primary.main"
+                          : "inherit",
+                    }}
+                  >
+                    {icon}
+                  </Box>
 
-                  <Typography variant="h6">{title}</Typography>
+                  <Typography variant="h6" sx={{ fontWeight: 600 }}>
+                    {title}
+                  </Typography>
                   <Typography variant="body2">{description}</Typography>
                 </Box>
               </Box>
