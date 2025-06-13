@@ -1,4 +1,5 @@
 import * as React from "react";
+import { useNavigate } from "react-router-dom";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Container from "@mui/material/Container";
@@ -7,7 +8,7 @@ import Link from "@mui/material/Link";
 import Stack from "@mui/material/Stack";
 import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
-import visuallyHidden from "@mui/utils/visuallyHidden";
+import { visuallyHidden } from "@mui/utils";
 import { styled } from "@mui/material/styles";
 
 const StyledBox = styled("div")(({ theme }) => ({
@@ -15,7 +16,7 @@ const StyledBox = styled("div")(({ theme }) => ({
   width: "100%",
   height: 400,
   marginTop: theme.spacing(8),
-  borderRadius: (theme.vars || theme).shape.borderRadius,
+  borderRadius: theme.spacing(2),
   outline: "6px solid",
   outlineColor: "hsla(220, 25%, 80%, 0.2)",
   border: "1px solid",
@@ -36,13 +37,22 @@ const StyledBox = styled("div")(({ theme }) => ({
 }));
 
 export default function Hero() {
+  const navigate = useNavigate();
+
+  const handleGetStarted = () => {
+    navigate("/sign-up");
+  };
+
+  const handleViewDemo = () => {
+    navigate("/templates");
+  };
+
   return (
     <Box
       id="hero"
       sx={(theme) => ({
         width: "100%",
         backgroundRepeat: "no-repeat",
-
         backgroundImage:
           "radial-gradient(ellipse 80% 50% at 50% -20%, hsl(210, 100%, 90%), transparent)",
         ...theme.applyStyles("dark", {
@@ -72,65 +82,91 @@ export default function Hero() {
               flexDirection: { xs: "column", sm: "row" },
               alignItems: "center",
               fontSize: "clamp(3rem, 10vw, 3.5rem)",
+              fontWeight: 700,
+              textAlign: "center",
             }}
           >
-            Our&nbsp;latest&nbsp;
-            <Typography
+            <Box
               component="span"
-              variant="h1"
-              sx={(theme) => ({
-                fontSize: "inherit",
-                color: "primary.main",
-                ...theme.applyStyles("dark", {
-                  color: "primary.light",
-                }),
-              })}
+              sx={{
+                background:
+                  "linear-gradient(45deg, #1976d2 30%, #42a5f5 70%, #4caf50 90%)",
+                backgroundClip: "text",
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+                mr: { sm: 1 },
+              }}
             >
-              products
-            </Typography>
+              Lawdesk
+            </Box>
+            <Box
+              component="span"
+              sx={{
+                color: (theme) =>
+                  theme.palette.mode === "light"
+                    ? "primary.main"
+                    : "primary.light",
+              }}
+            >
+              CRM
+            </Box>
           </Typography>
           <Typography
             sx={{
               textAlign: "center",
               color: "text.secondary",
               width: { sm: "100%", md: "80%" },
+              fontSize: { xs: "1.1rem", sm: "1.25rem" },
+              lineHeight: 1.6,
             }}
           >
-            Explore our cutting-edge dashboard, delivering high-quality
-            solutions tailored to your needs. Elevate your experience with
-            top-tier features and services.
+            O primeiro sistema jurídico completo com{" "}
+            <Box
+              component="span"
+              sx={{
+                color: (theme) =>
+                  theme.palette.mode === "light"
+                    ? "primary.main"
+                    : "primary.light",
+                fontWeight: 600,
+              }}
+            >
+              inteligência artificial integrada
+            </Box>{" "}
+            e automação de ponta a ponta.
           </Typography>
           <Stack
             direction={{ xs: "column", sm: "row" }}
             spacing={1}
             useFlexGap
-            sx={{ pt: 2, width: { xs: "100%", sm: "350px" } }}
+            sx={{ pt: 2, width: { xs: "100%", sm: "auto" } }}
           >
-            <InputLabel htmlFor="email-hero" sx={visuallyHidden}>
-              Email
-            </InputLabel>
-            <TextField
-              id="email-hero"
-              hiddenLabel
-              size="small"
-              variant="outlined"
-              aria-label="Enter your email address"
-              placeholder="Your email address"
-              fullWidth
-              slotProps={{
-                htmlInput: {
-                  autoComplete: "off",
-                  "aria-label": "Enter your email address",
-                },
-              }}
-            />
             <Button
               variant="contained"
               color="primary"
-              size="small"
-              sx={{ minWidth: "fit-content" }}
+              size="large"
+              onClick={handleGetStarted}
+              sx={{
+                minWidth: 200,
+                fontSize: "1rem",
+                fontWeight: 600,
+                py: 1.5,
+              }}
             >
-              Start now
+              Testar Gratuitamente
+            </Button>
+            <Button
+              variant="outlined"
+              color="primary"
+              size="large"
+              onClick={handleViewDemo}
+              sx={{
+                minWidth: 200,
+                fontSize: "1rem",
+                py: 1.5,
+              }}
+            >
+              Ver Demonstração
             </Button>
           </Stack>
           <Typography
@@ -138,11 +174,8 @@ export default function Hero() {
             color="text.secondary"
             sx={{ textAlign: "center" }}
           >
-            By clicking &quot;Start now&quot; you agree to our&nbsp;
-            <Link href="#" color="primary">
-              Terms & Conditions
-            </Link>
-            .
+            💳 Sem cartão de crédito &nbsp;•&nbsp; 🚀 Setup em 5 minutos
+            &nbsp;•&nbsp; 📞 Suporte especializado
           </Typography>
         </Stack>
         <StyledBox id="image" />
