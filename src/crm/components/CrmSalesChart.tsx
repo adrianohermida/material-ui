@@ -159,11 +159,13 @@ export default function CrmSalesChart() {
             slotProps={{
               legend: {
                 position: { vertical: "top", horizontal: "middle" },
-                itemMarkWidth: 10,
-                itemMarkHeight: 10,
-                markGap: 5,
-                itemGap: 10,
               },
+            }}
+            legend={{
+              itemMarkWidth: 10,
+              itemMarkHeight: 10,
+              markGap: 5,
+              itemGap: 10,
             }}
           />
         </Box>
