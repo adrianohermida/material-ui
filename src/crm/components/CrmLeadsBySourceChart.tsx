@@ -61,8 +61,8 @@ export default function CrmLeadsBySourceChart() {
               legend: {
                 position: { vertical: "middle", horizontal: "right" },
                 direction: "column",
-                itemWidth: 10,
-                itemHeight: 10,
+                itemMarkWidth: 10,
+                itemMarkHeight: 10,
                 markGap: 5,
                 itemGap: 8,
               },
