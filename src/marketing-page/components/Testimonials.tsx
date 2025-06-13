@@ -68,12 +68,12 @@ export default function Testimonials() {
         alignItems: "center",
       }}
     >
-      {/* Header */}
+      {/* Header Section */}
       <Box
         sx={{
           textAlign: "center",
           mb: 6,
-          maxWidth: "650px",
+          maxWidth: "600px",
         }}
       >
         <Typography
@@ -83,7 +83,7 @@ export default function Testimonials() {
             fontWeight: 600,
             mb: 2,
             color: "text.primary",
-            fontSize: "2.125rem",
+            fontSize: { xs: "1.75rem", md: "2.125rem" },
           }}
         >
           Testimonials
@@ -103,23 +103,24 @@ export default function Testimonials() {
       </Box>
 
       {/* Testimonials Grid */}
-      <Grid container spacing={3} sx={{ maxWidth: "1000px", width: "100%" }}>
+      <Grid container spacing={3} sx={{ maxWidth: "1000px" }}>
         {userTestimonials.map((testimonial, index) => (
           <Grid item xs={12} sm={6} md={4} key={index}>
             <Box
               sx={{
                 border: "1px solid",
                 borderColor: "divider",
-                borderRadius: "8px",
+                borderRadius: 2,
                 p: 3,
                 height: "100%",
-                minHeight: "280px",
+                minHeight: "260px",
                 display: "flex",
                 flexDirection: "column",
                 justifyContent: "space-between",
+                backgroundColor: "background.paper",
               }}
             >
-              {/* Testimonial Content */}
+              {/* Testimonial Text */}
               <Typography
                 variant="body2"
                 sx={{
@@ -127,13 +128,12 @@ export default function Testimonials() {
                   lineHeight: 1.5,
                   fontSize: "14px",
                   mb: 3,
-                  flexGrow: 1,
                 }}
               >
                 {testimonial.testimonial}
               </Typography>
 
-              {/* Author Info */}
+              {/* Author Section */}
               <Box
                 sx={{
                   display: "flex",
@@ -141,6 +141,7 @@ export default function Testimonials() {
                   justifyContent: "space-between",
                 }}
               >
+                {/* Left - Avatar and Info */}
                 <Box sx={{ display: "flex", alignItems: "center", gap: 1.5 }}>
                   <Avatar
                     alt={testimonial.name}
@@ -172,6 +173,7 @@ export default function Testimonials() {
                   </Box>
                 </Box>
 
+                {/* Right - Company */}
                 <Typography
                   sx={{
                     fontSize: "12px",
