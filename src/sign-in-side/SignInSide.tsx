@@ -3,6 +3,7 @@ import CssBaseline from "@mui/material/CssBaseline";
 import Stack from "@mui/material/Stack";
 import AppTheme from "../shared-theme/AppTheme";
 import ColorModeSelect from "../shared-theme/ColorModeSelect";
+import BackToHomeButton from "../components/BackToHomeButton";
 import SignInCard from "./components/SignInCard";
 import Content from "./components/Content";
 
@@ -10,6 +11,7 @@ export default function SignInSide(props: { disableCustomTheme?: boolean }) {
   return (
     <AppTheme {...props}>
       <CssBaseline enableColorScheme />
+      <BackToHomeButton />
       <ColorModeSelect sx={{ position: "fixed", top: "1rem", right: "1rem" }} />
       <Stack
         direction="column"

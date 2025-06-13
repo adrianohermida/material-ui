@@ -15,6 +15,7 @@ import MuiCard from "@mui/material/Card";
 import { styled } from "@mui/material/styles";
 import AppTheme from "../shared-theme/AppTheme";
 import ColorModeSelect from "../shared-theme/ColorModeSelect";
+import BackToHomeButton from "../components/BackToHomeButton";
 import {
   GoogleIcon,
   FacebookIcon,
