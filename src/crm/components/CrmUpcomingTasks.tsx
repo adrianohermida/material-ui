@@ -6,7 +6,6 @@ import Typography from "@mui/material/Typography";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
-import ListItemText from "@mui/material/ListItemText";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import Checkbox from "@mui/material/Checkbox";
 import IconButton from "@mui/material/IconButton";
@@ -132,9 +131,13 @@ export default function CrmUpcomingTasks() {
                       inputProps={{ "aria-labelledby": labelId }}
                     />
                   </ListItemIcon>
-                  <Box sx={{ flex: 1, minWidth: 0 }}>
+
+                  {/* Layout customizado para evitar problemas de estrutura HTML */}
+                  <Box sx={{ flex: 1, minWidth: 0, py: 1 }}>
+                    {/* Título da tarefa */}
                     <Typography
                       id={labelId}
+                      variant="body1"
                       sx={{
                         textDecoration: task.completed
                           ? "line-through"
@@ -142,10 +145,14 @@ export default function CrmUpcomingTasks() {
                         color: task.completed
                           ? "text.secondary"
                           : "text.primary",
+                        fontSize: "0.875rem",
+                        lineHeight: 1.3,
                       }}
                     >
                       {task.task}
                     </Typography>
+
+                    {/* Informações secundárias em Box separado */}
                     <Box
                       sx={{
                         display: "flex",
@@ -161,10 +168,19 @@ export default function CrmUpcomingTasks() {
                         variant="outlined"
                         sx={{
                           height: 20,
-                          "& .MuiChip-label": { px: 1, py: 0 },
+                          fontSize: "0.75rem",
+                          "& .MuiChip-label": {
+                            px: 1,
+                            py: 0,
+                            fontSize: "inherit",
+                          },
                         }}
                       />
-                      <Typography variant="caption" color="text.secondary">
+                      <Typography
+                        variant="caption"
+                        color="text.secondary"
+                        sx={{ fontSize: "0.75rem" }}
+                      >
                         {task.dueDate}
                       </Typography>
                     </Box>
