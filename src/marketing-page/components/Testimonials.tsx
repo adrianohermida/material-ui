@@ -68,12 +68,13 @@ export default function Testimonials() {
         alignItems: "center",
       }}
     >
-      {/* Section Header */}
+      {/* Header Section */}
       <Box
         sx={{
           textAlign: "center",
-          mb: 8,
+          mb: 6,
           maxWidth: "600px",
+          mx: "auto",
         }}
       >
         <Typography
@@ -81,7 +82,7 @@ export default function Testimonials() {
           variant="h4"
           sx={{
             fontWeight: 600,
-            mb: 3,
+            mb: 2,
             color: "text.primary",
             fontSize: { xs: "1.75rem", md: "2.125rem" },
           }}
@@ -102,95 +103,100 @@ export default function Testimonials() {
         </Typography>
       </Box>
 
-      {/* Testimonials Cards Grid */}
-      <Box sx={{ width: "100%", maxWidth: "1200px" }}>
-        <Grid container spacing={3}>
-          {userTestimonials.map((testimonial, index) => (
-            <Grid item xs={12} sm={6} md={4} key={index}>
-              <Box
+      {/* Testimonials Grid - 2 rows x 3 columns */}
+      <Grid container spacing={3} sx={{ maxWidth: "1000px" }}>
+        {userTestimonials.map((testimonial, index) => (
+          <Grid item xs={12} sm={6} md={4} key={index}>
+            <Box
+              sx={{
+                border: "1px solid",
+                borderColor: "divider",
+                borderRadius: "8px",
+                p: 3,
+                height: "100%",
+                minHeight: "260px",
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "space-between",
+                backgroundColor: "background.paper",
+                transition: "border-color 0.2s ease",
+                "&:hover": {
+                  borderColor: "primary.light",
+                },
+              }}
+            >
+              {/* Testimonial Text */}
+              <Typography
+                variant="body2"
                 sx={{
-                  border: "1px solid",
-                  borderColor: "divider",
-                  borderRadius: "8px",
-                  p: 3,
-                  height: "100%",
-                  minHeight: "280px",
-                  display: "flex",
-                  flexDirection: "column",
-                  justifyContent: "space-between",
-                  backgroundColor: "background.paper",
+                  color: "text.primary",
+                  lineHeight: 1.5,
+                  fontSize: "14px",
+                  mb: 3,
+                  flexGrow: 1,
                 }}
               >
-                {/* Testimonial Quote */}
-                <Typography
-                  variant="body2"
-                  sx={{
-                    color: "text.primary",
-                    lineHeight: 1.5,
-                    fontSize: "14px",
-                    mb: 3,
-                  }}
-                >
-                  {testimonial.testimonial}
-                </Typography>
+                {testimonial.testimonial}
+              </Typography>
 
-                {/* Author Information Row */}
-                <Box
-                  sx={{
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "space-between",
-                  }}
-                >
-                  {/* Left: Avatar + Name & Title */}
-                  <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
-                    <Avatar
-                      alt={testimonial.name}
-                      src={testimonial.avatar}
-                      sx={{ width: 40, height: 40 }}
-                    />
-                    <Box>
-                      <Typography
-                        variant="subtitle2"
-                        sx={{
-                          fontWeight: 600,
-                          color: "text.primary",
-                          fontSize: "14px",
-                          lineHeight: 1.2,
-                        }}
-                      >
-                        {testimonial.name}
-                      </Typography>
-                      <Typography
-                        variant="body2"
-                        sx={{
-                          color: "text.secondary",
-                          fontSize: "12px",
-                          lineHeight: 1.2,
-                        }}
-                      >
-                        {testimonial.occupation}
-                      </Typography>
-                    </Box>
+              {/* Author Section */}
+              <Box
+                sx={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "space-between",
+                  mt: "auto",
+                }}
+              >
+                {/* Left Side - Avatar + Name/Title */}
+                <Box sx={{ display: "flex", alignItems: "center", gap: 1.5 }}>
+                  <Avatar
+                    alt={testimonial.name}
+                    src={testimonial.avatar}
+                    sx={{ width: 40, height: 40 }}
+                  />
+                  <Box>
+                    <Typography
+                      variant="subtitle2"
+                      sx={{
+                        fontWeight: 600,
+                        color: "text.primary",
+                        fontSize: "14px",
+                        lineHeight: 1.2,
+                      }}
+                    >
+                      {testimonial.name}
+                    </Typography>
+                    <Typography
+                      variant="body2"
+                      sx={{
+                        color: "text.secondary",
+                        fontSize: "12px",
+                        lineHeight: 1.2,
+                      }}
+                    >
+                      {testimonial.occupation}
+                    </Typography>
                   </Box>
-
-                  {/* Right: Company Name */}
-                  <Typography
-                    sx={{
-                      fontSize: "12px",
-                      fontWeight: 500,
-                      color: "text.disabled",
-                      textAlign: "right",
-                    }}
-                  >
-                    {testimonial.company}
-                  </Typography>
                 </Box>
+
+                {/* Right Side - Company */}
+                <Typography
+                  variant="caption"
+                  sx={{
+                    fontSize: "12px",
+                    fontWeight: 500,
+                    color: "text.disabled",
+                    textAlign: "right",
+                  }}
+                >
+                  {testimonial.company}
+                </Typography>
               </Box>
-            </Grid>
-          ))}
-        </Grid>
-      </Box>
+            </Box>
+          </Grid>
+        ))}
+      </Grid>
     </Container>
   );
 }
