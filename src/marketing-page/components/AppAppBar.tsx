@@ -1,4 +1,5 @@
 import * as React from "react";
+import { useNavigate } from "react-router-dom";
 import { styled, alpha } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import AppBar from "@mui/material/AppBar";
@@ -32,9 +33,21 @@ const StyledToolbar = styled(Toolbar)(({ theme }) => ({
 
 export default function AppAppBar() {
   const [open, setOpen] = React.useState(false);
+  const navigate = useNavigate();
 
   const toggleDrawer = (newOpen: boolean) => () => {
     setOpen(newOpen);
+  };
+
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
+  const handleNavigation = (path: string) => {
+    navigate(path);
   };
 
   return (
@@ -55,33 +68,64 @@ export default function AppAppBar() {
           >
             <Sitemark />
             <Box sx={{ display: { xs: "none", md: "flex" } }}>
-              <Button variant="text" color="info" size="small">
-                Features
-              </Button>
-              <Button variant="text" color="info" size="small">
-                Testimonials
-              </Button>
-              <Button variant="text" color="info" size="small">
-                Highlights
-              </Button>
-              <Button variant="text" color="info" size="small">
-                Pricing
+              <Button
+                variant="text"
+                color="info"
+                size="small"
+                onClick={() => scrollToSection("features")}
+              >
+                Recursos
               </Button>
               <Button
                 variant="text"
                 color="info"
                 size="small"
-                sx={{ minWidth: 0 }}
+                onClick={() => scrollToSection("testimonials")}
               >
-                FAQ
+                Depoimentos
               </Button>
               <Button
                 variant="text"
                 color="info"
                 size="small"
+                onClick={() => scrollToSection("highlights")}
+              >
+                Diferenciais
+              </Button>
+              <Button
+                variant="text"
+                color="info"
+                size="small"
+                onClick={() => scrollToSection("pricing")}
+              >
+                Planos
+              </Button>
+              <Button
+                variant="text"
+                color="info"
+                size="small"
+                onClick={() => scrollToSection("faq")}
                 sx={{ minWidth: 0 }}
               >
-                Blog
+                Perguntas
+              </Button>
+              <Button
+                variant="text"
+                color="info"
+                size="small"
+                onClick={() => handleNavigation("/blog")}
+                sx={{ minWidth: 0 }}
+              >
+                Conteúdo
+              </Button>
+              <Button
+                variant="text"
+                color="info"
+                size="small"
+                onClick={() => handleNavigation("/help")}
+                sx={{ minWidth: 0 }}
+              >
+                Ajuda
               </Button>
             </Box>
           </Box>
@@ -92,11 +136,21 @@ export default function AppAppBar() {
               alignItems: "center",
             }}
           >
-            <Button color="primary" variant="text" size="small">
-              Sign in
+            <Button
+              color="primary"
+              variant="text"
+              size="small"
+              onClick={() => handleNavigation("/sign-in")}
+            >
+              Entrar
             </Button>
-            <Button color="primary" variant="contained" size="small">
-              Sign up
+            <Button
+              color="primary"
+              variant="contained"
+              size="small"
+              onClick={() => handleNavigation("/sign-up")}
+            >
+              Testar Grátis
             </Button>
             <ColorModeIconDropdown />
           </Box>
@@ -127,21 +181,81 @@ export default function AppAppBar() {
                   </IconButton>
                 </Box>
 
-                <MenuItem>Features</MenuItem>
-                <MenuItem>Testimonials</MenuItem>
-                <MenuItem>Highlights</MenuItem>
-                <MenuItem>Pricing</MenuItem>
-                <MenuItem>FAQ</MenuItem>
-                <MenuItem>Blog</MenuItem>
+                <MenuItem
+                  onClick={() => {
+                    scrollToSection("features");
+                    toggleDrawer(false)();
+                  }}
+                >
+                  Recursos
+                </MenuItem>
+                <MenuItem
+                  onClick={() => {
+                    scrollToSection("testimonials");
+                    toggleDrawer(false)();
+                  }}
+                >
+                  Depoimentos
+                </MenuItem>
+                <MenuItem
+                  onClick={() => {
+                    scrollToSection("highlights");
+                    toggleDrawer(false)();
+                  }}
+                >
+                  Diferenciais
+                </MenuItem>
+                <MenuItem
+                  onClick={() => {
+                    scrollToSection("pricing");
+                    toggleDrawer(false)();
+                  }}
+                >
+                  Planos
+                </MenuItem>
+                <MenuItem
+                  onClick={() => {
+                    scrollToSection("faq");
+                    toggleDrawer(false)();
+                  }}
+                >
+                  Perguntas
+                </MenuItem>
+                <MenuItem
+                  onClick={() => {
+                    handleNavigation("/blog");
+                    toggleDrawer(false)();
+                  }}
+                >
+                  Conteúdo
+                </MenuItem>
+                <MenuItem
+                  onClick={() => {
+                    handleNavigation("/help");
+                    toggleDrawer(false)();
+                  }}
+                >
+                  Ajuda
+                </MenuItem>
                 <Divider sx={{ my: 3 }} />
                 <MenuItem>
-                  <Button color="primary" variant="contained" fullWidth>
-                    Sign up
+                  <Button
+                    color="primary"
+                    variant="contained"
+                    fullWidth
+                    onClick={() => handleNavigation("/sign-up")}
+                  >
+                    Testar Grátis
                   </Button>
                 </MenuItem>
                 <MenuItem>
-                  <Button color="primary" variant="outlined" fullWidth>
-                    Sign in
+                  <Button
+                    color="primary"
+                    variant="outlined"
+                    fullWidth
+                    onClick={() => handleNavigation("/sign-in")}
+                  >
+                    Entrar
                   </Button>
                 </MenuItem>
               </Box>
