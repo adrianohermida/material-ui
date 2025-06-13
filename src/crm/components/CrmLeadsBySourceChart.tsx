@@ -63,12 +63,6 @@ export default function CrmLeadsBySourceChart() {
                 direction: "column",
               },
             }}
-            legend={{
-              itemMarkWidth: 10,
-              itemMarkHeight: 10,
-              markGap: 5,
-              itemGap: 8,
-            }}
             margin={{ right: 120 }}
           />
         </Box>

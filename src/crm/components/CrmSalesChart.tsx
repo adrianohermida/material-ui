@@ -161,12 +161,6 @@ export default function CrmSalesChart() {
                 position: { vertical: "top", horizontal: "middle" },
               },
             }}
-            legend={{
-              itemMarkWidth: 10,
-              itemMarkHeight: 10,
-              markGap: 5,
-              itemGap: 10,
-            }}
           />
         </Box>
       </CardContent>
