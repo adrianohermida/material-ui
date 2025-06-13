@@ -9,15 +9,11 @@ import Typography from "@mui/material/Typography";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 
 export default function FAQ() {
-  const [expanded, setExpanded] = React.useState<string[]>([]);
+  const [expanded, setExpanded] = React.useState<string | false>(false);
 
   const handleChange =
     (panel: string) => (event: React.SyntheticEvent, isExpanded: boolean) => {
-      setExpanded(
-        isExpanded
-          ? [...expanded, panel]
-          : expanded.filter((item) => item !== panel),
-      );
+      setExpanded(isExpanded ? panel : false);
     };
 
   return (
@@ -40,13 +36,14 @@ export default function FAQ() {
           color: "text.primary",
           width: { sm: "100%", md: "60%" },
           textAlign: { sm: "left", md: "center" },
+          fontWeight: 700,
         }}
       >
-        Frequently asked questions
+        Dúvidas frequentes
       </Typography>
       <Box sx={{ width: "100%" }}>
         <Accordion
-          expanded={expanded.includes("panel1")}
+          expanded={expanded === "panel1"}
           onChange={handleChange("panel1")}
         >
           <AccordionSummary
@@ -54,8 +51,8 @@ export default function FAQ() {
             aria-controls="panel1d-content"
             id="panel1d-header"
           >
-            <Typography component="span" variant="subtitle2">
-              How do I contact customer support if I have a question or issue?
+            <Typography component="h3" variant="subtitle2">
+              O que diferencia o Lawdesk de outros CRMs?
             </Typography>
           </AccordionSummary>
           <AccordionDetails>
@@ -64,15 +61,16 @@ export default function FAQ() {
               gutterBottom
               sx={{ maxWidth: { sm: "100%", md: "70%" } }}
             >
-              You can reach our customer support team by emailing&nbsp;
-              <Link href="mailto:support@email.com">support@email.com</Link>
-              &nbsp;or calling our toll-free number. We&apos;re here to assist
-              you promptly.
+              O Lawdesk foi pensado exclusivamente para advogados e escritórios
+              jurídicos. Integra IA jurídica, automação de documentos, gestão
+              financeira especializada, CRM personalizado e uma comunidade
+              jurídica ativa em uma única plataforma. Não é apenas um CRM
+              adaptado - é uma solução nativa para o mercado jurídico.
             </Typography>
           </AccordionDetails>
         </Accordion>
         <Accordion
-          expanded={expanded.includes("panel2")}
+          expanded={expanded === "panel2"}
           onChange={handleChange("panel2")}
         >
           <AccordionSummary
@@ -80,8 +78,8 @@ export default function FAQ() {
             aria-controls="panel2d-content"
             id="panel2d-header"
           >
-            <Typography component="span" variant="subtitle2">
-              Can I return the product if it doesn&apos;t meet my expectations?
+            <Typography component="h3" variant="subtitle2">
+              É possível importar dados do meu sistema atual?
             </Typography>
           </AccordionSummary>
           <AccordionDetails>
@@ -90,14 +88,16 @@ export default function FAQ() {
               gutterBottom
               sx={{ maxWidth: { sm: "100%", md: "70%" } }}
             >
-              Absolutely! We offer a hassle-free return policy. If you&apos;re
-              not completely satisfied, you can return the product within
-              [number of days] days for a full refund or exchange.
+              Sim, oferecemos suporte completo para importação de dados de
+              outros softwares jurídicos. Nossa equipe técnica auxilia na
+              migração de clientes, processos, documentos e histórico
+              financeiro. O processo é seguro e preserva a integridade de todas
+              as informações.
             </Typography>
           </AccordionDetails>
         </Accordion>
         <Accordion
-          expanded={expanded.includes("panel3")}
+          expanded={expanded === "panel3"}
           onChange={handleChange("panel3")}
         >
           <AccordionSummary
@@ -105,8 +105,8 @@ export default function FAQ() {
             aria-controls="panel3d-content"
             id="panel3d-header"
           >
-            <Typography component="span" variant="subtitle2">
-              What makes your product stand out from others in the market?
+            <Typography component="h3" variant="subtitle2">
+              Existe suporte especializado?
             </Typography>
           </AccordionSummary>
           <AccordionDetails>
@@ -115,15 +115,15 @@ export default function FAQ() {
               gutterBottom
               sx={{ maxWidth: { sm: "100%", md: "70%" } }}
             >
-              Our product distinguishes itself through its adaptability,
-              durability, and innovative features. We prioritize user
-              satisfaction and continually strive to exceed expectations in
-              every aspect.
+              Sim! Nossa equipe inclui especialistas jurídicos e técnicos que
+              entendem a rotina dos escritórios. Oferecemos suporte via chat,
+              telefone e email nos planos Profissional e Empresarial, além de
+              consultoria personalizada para otimização de processos.
             </Typography>
           </AccordionDetails>
         </Accordion>
         <Accordion
-          expanded={expanded.includes("panel4")}
+          expanded={expanded === "panel4"}
           onChange={handleChange("panel4")}
         >
           <AccordionSummary
@@ -131,8 +131,8 @@ export default function FAQ() {
             aria-controls="panel4d-content"
             id="panel4d-header"
           >
-            <Typography component="span" variant="subtitle2">
-              Is there a warranty on the product, and what does it cover?
+            <Typography component="h3" variant="subtitle2">
+              Como funciona a IA Jurídica?
             </Typography>
           </AccordionSummary>
           <AccordionDetails>
@@ -141,10 +141,64 @@ export default function FAQ() {
               gutterBottom
               sx={{ maxWidth: { sm: "100%", md: "70%" } }}
             >
-              Yes, our product comes with a [length of warranty] warranty. It
-              covers defects in materials and workmanship. If you encounter any
-              issues covered by the warranty, please contact our customer
-              support for assistance.
+              Nossa IA Jurídica atua como um copiloto inteligente, sugerindo
+              automaticamente próximos passos em processos, gerando minutas de
+              documentos, analisando prazos e identificando padrões em sua base
+              de dados. Ela aprende com seu escritório e melhora continuamente
+              suas sugestões.
+            </Typography>
+          </AccordionDetails>
+        </Accordion>
+        <Accordion
+          expanded={expanded === "panel5"}
+          onChange={handleChange("panel5")}
+        >
+          <AccordionSummary
+            expandIcon={<ExpandMoreIcon />}
+            aria-controls="panel5d-content"
+            id="panel5d-header"
+          >
+            <Typography component="h3" variant="subtitle2">
+              Os dados ficam seguros na nuvem?
+            </Typography>
+          </AccordionSummary>
+          <AccordionDetails>
+            <Typography
+              variant="body2"
+              gutterBottom
+              sx={{ maxWidth: { sm: "100%", md: "70%" } }}
+            >
+              Absolutely! Utilizamos criptografia de nível bancário, servidores
+              em território brasileiro com certificação ISO 27001, backup
+              automático em múltiplas localizações e trilha de auditoria
+              completa. Seus dados estão mais seguros na nossa nuvem do que em
+              servidores locais.
+            </Typography>
+          </AccordionDetails>
+        </Accordion>
+        <Accordion
+          expanded={expanded === "panel6"}
+          onChange={handleChange("panel6")}
+        >
+          <AccordionSummary
+            expandIcon={<ExpandMoreIcon />}
+            aria-controls="panel6d-content"
+            id="panel6d-header"
+          >
+            <Typography component="h3" variant="subtitle2">
+              Posso cancelar a qualquer momento?
+            </Typography>
+          </AccordionSummary>
+          <AccordionDetails>
+            <Typography
+              variant="body2"
+              gutterBottom
+              sx={{ maxWidth: { sm: "100%", md: "70%" } }}
+            >
+              Sim, não há fidelidade ou multa por cancelamento. Você pode
+              cancelar a qualquer momento e seus dados ficarão disponíveis por
+              90 dias para exportação. Oferecemos também a opção de pausar
+              temporariamente sua conta.
             </Typography>
           </AccordionDetails>
         </Accordion>

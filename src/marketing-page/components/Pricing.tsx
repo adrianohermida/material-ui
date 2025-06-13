@@ -1,63 +1,79 @@
 import * as React from "react";
+import { useNavigate } from "react-router-dom";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Card from "@mui/material/Card";
 import Chip from "@mui/material/Chip";
-import CardActions from "@mui/material/CardActions";
-import CardContent from "@mui/material/CardContent";
 import Container from "@mui/material/Container";
 import Divider from "@mui/material/Divider";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
-import AutoAwesomeIcon from "@mui/icons-material/AutoAwesome";
 import CheckCircleRoundedIcon from "@mui/icons-material/CheckCircleRounded";
 
 const tiers = [
   {
-    title: "Free",
+    title: "Essencial",
     price: "0",
     description: [
-      "10 users included",
-      "2 GB of storage",
-      "Help center access",
-      "Email support",
+      "1 usuário",
+      "CRM Jurídico básico",
+      "Painel de Processos",
+      "Suporte via FAQ",
+      "5GB armazenamento",
     ],
-    buttonText: "Sign up for free",
+    buttonText: "Começar grátis",
     buttonVariant: "outlined",
     buttonColor: "primary",
   },
   {
-    title: "Professional",
-    subheader: "Recommended",
-    price: "15",
+    title: "Profissional",
+    subheader: "Mais popular",
+    price: "289",
     description: [
-      "20 users included",
-      "10 GB of storage",
-      "Help center access",
-      "Priority email support",
-      "Dedicated team",
-      "Best deals",
+      "Até 5 usuários",
+      "CRM Jurídico completo",
+      "Módulo Financeiro",
+      "Assinatura Eletrônica",
+      "IA Jurídica básica",
+      "50GB armazenamento",
+      "Suporte prioritário",
     ],
-    buttonText: "Start now",
+    buttonText: "Testar 30 dias grátis",
     buttonVariant: "contained",
-    buttonColor: "secondary",
+    buttonColor: "primary",
   },
   {
-    title: "Enterprise",
-    price: "30",
+    title: "Empresarial",
+    price: "597",
     description: [
-      "50 users included",
-      "30 GB of storage",
-      "Help center access",
-      "Phone & email support",
+      "Usuários ilimitados",
+      "Gestão de Equipe avançada",
+      "Automação de Fluxos",
+      "IA Jurídica avançada",
+      "API e Integrações",
+      "Armazenamento ilimitado",
+      "Consultoria Personalizada",
+      "Marketplace premium",
     ],
-    buttonText: "Contact us",
+    buttonText: "Contatar vendas",
     buttonVariant: "outlined",
     buttonColor: "primary",
   },
 ];
 
 export default function Pricing() {
+  const navigate = useNavigate();
+
+  const handleGetStarted = (tier: any) => {
+    if (tier.title === "Essencial") {
+      navigate("/sign-up");
+    } else if (tier.title === "Profissional") {
+      navigate("/sign-up");
+    } else {
+      navigate("/help");
+    }
+  };
+
   return (
     <Container
       id="pricing"
@@ -80,16 +96,13 @@ export default function Pricing() {
         <Typography
           component="h2"
           variant="h4"
-          gutterBottom
-          sx={{ color: "text.primary" }}
+          sx={{ color: "text.primary", fontWeight: 700 }}
         >
-          Pricing
+          Planos para cada fase do seu escritório
         </Typography>
         <Typography variant="body1" sx={{ color: "text.secondary" }}>
-          Quickly build an effective pricing table for your potential customers
-          with this layout. <br />
-          It&apos;s built with default Material UI components with little
-          customization.
+          Escolha o plano ideal para o tamanho e necessidades do seu escritório
+          jurídico. Comece grátis e evolua conforme seu crescimento.
         </Typography>
       </Box>
       <Grid
@@ -99,8 +112,11 @@ export default function Pricing() {
       >
         {tiers.map((tier) => (
           <Grid
-            size={{ xs: 12, sm: tier.title === "Enterprise" ? 12 : 6, md: 4 }}
+            item
             key={tier.title}
+            xs={12}
+            sm={tier.title === "Empresarial" ? 12 : 6}
+            md={4}
           >
             <Card
               sx={[
@@ -109,105 +125,119 @@ export default function Pricing() {
                   display: "flex",
                   flexDirection: "column",
                   gap: 4,
+                  border: "1px solid",
+                  borderColor: "divider",
+                  background: "linear-gradient(#033363, #021F3B)",
+                  height: "100%",
                 },
-                tier.title === "Professional" &&
+                tier.title === "Profissional" &&
                   ((theme) => ({
-                    border: "none",
-                    background:
-                      "radial-gradient(circle at 50% 0%, hsl(220, 20%, 35%), hsl(220, 30%, 6%))",
-                    boxShadow: `0 8px 12px hsla(220, 20%, 42%, 0.2)`,
-                    ...theme.applyStyles("dark", {
-                      background:
-                        "radial-gradient(circle at 50% 0%, hsl(220, 20%, 20%), hsl(220, 30%, 16%))",
-                      boxShadow: `0 8px 12px hsla(0, 0%, 0%, 0.8)`,
-                    }),
+                    borderColor: "primary.main",
+                    background: "linear-gradient(#033363, #021F3B)",
+                    boxShadow: `0 8px 12px hsla(210, 98%, 42%, 0.2)`,
                   })),
               ]}
             >
-              <CardContent>
-                <Box
-                  sx={[
-                    {
-                      mb: 1,
-                      display: "flex",
-                      justifyContent: "space-between",
-                      alignItems: "center",
-                      gap: 2,
-                    },
-                    tier.title === "Professional"
-                      ? { color: "grey.100" }
-                      : { color: "" },
-                  ]}
-                >
+              <Box
+                sx={[
+                  {
+                    width: "100%",
+                    display: "flex",
+                    textAlign: "left",
+                    flexDirection: "column",
+                    alignItems: "start",
+                    gap: 4,
+                  },
+                  tier.title === "Profissional"
+                    ? { color: "grey.100" }
+                    : { color: "grey.400" },
+                ]}
+              >
+                <div>
                   <Typography component="h3" variant="h6">
                     {tier.title}
                   </Typography>
-                  {tier.title === "Professional" && (
-                    <Chip icon={<AutoAwesomeIcon />} label={tier.subheader} />
-                  )}
-                </Box>
-                <Box
-                  sx={[
-                    {
-                      display: "flex",
-                      alignItems: "baseline",
-                    },
-                    tier.title === "Professional"
-                      ? { color: "grey.50" }
-                      : { color: null },
-                  ]}
-                >
-                  <Typography component="h3" variant="h2">
-                    ${tier.price}
-                  </Typography>
-                  <Typography component="h3" variant="h6">
-                    &nbsp; per month
-                  </Typography>
-                </Box>
-                <Divider sx={{ my: 2, opacity: 0.8, borderColor: "divider" }} />
-                {tier.description.map((line) => (
-                  <Box
-                    key={line}
-                    sx={{
-                      py: 1,
-                      display: "flex",
-                      gap: 1.5,
-                      alignItems: "center",
-                    }}
-                  >
-                    <CheckCircleRoundedIcon
-                      sx={[
-                        {
-                          width: 20,
-                        },
-                        tier.title === "Professional"
-                          ? { color: "primary.light" }
-                          : { color: "primary.main" },
-                      ]}
-                    />
-                    <Typography
-                      variant="subtitle2"
-                      component={"span"}
-                      sx={[
-                        tier.title === "Professional"
-                          ? { color: "grey.50" }
-                          : { color: null },
-                      ]}
-                    >
-                      {line}
+                  <Typography variant="h2" component="h3">
+                    R${tier.price}
+                    <Typography component="span" variant="h6">
+                      /mês
                     </Typography>
-                  </Box>
-                ))}
-              </CardContent>
-              <CardActions>
+                  </Typography>
+                </div>
+                {tier.title === "Profissional" && (
+                  <Chip
+                    icon={<CheckCircleRoundedIcon />}
+                    label={tier.subheader}
+                    size="small"
+                    sx={{
+                      background: (theme) =>
+                        theme.palette.mode === "light" ? "" : "none",
+                      backgroundColor: "primary.contrastText",
+                      "& .MuiChip-label": {
+                        color: "primary.dark",
+                      },
+                      "& .MuiChip-icon": {
+                        color: "primary.dark",
+                      },
+                    }}
+                  />
+                )}
+                <Box
+                  sx={{
+                    display: "flex",
+                    flexDirection: "column",
+                    gap: 2,
+                    py: 2,
+                  }}
+                >
+                  {tier.description.map((line) => (
+                    <Box
+                      key={line}
+                      sx={{
+                        py: 1,
+                        display: "flex",
+                        gap: 1.5,
+                        alignItems: "center",
+                      }}
+                    >
+                      <CheckCircleRoundedIcon
+                        sx={{
+                          width: 20,
+                          color:
+                            tier.title === "Profissional"
+                              ? "primary.light"
+                              : "primary.main",
+                        }}
+                      />
+                      <Typography
+                        variant="subtitle2"
+                        component="span"
+                        sx={{
+                          color:
+                            tier.title === "Profissional"
+                              ? "grey.200"
+                              : "grey.400",
+                        }}
+                      >
+                        {line}
+                      </Typography>
+                    </Box>
+                  ))}
+                </Box>
                 <Button
                   fullWidth
                   variant={tier.buttonVariant as "outlined" | "contained"}
-                  color={tier.buttonColor as "primary" | "secondary"}
+                  color={tier.buttonColor as "primary"}
+                  onClick={() => handleGetStarted(tier)}
+                  sx={{
+                    borderColor:
+                      tier.title === "Profissional" ? "primary.light" : "",
+                    color: tier.title === "Profissional" ? "primary.light" : "",
+                  }}
                 >
                   {tier.buttonText}
                 </Button>
-              </CardActions>
+              </Box>
             </Card>
           </Grid>
         ))}
