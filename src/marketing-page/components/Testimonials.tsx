@@ -58,58 +58,55 @@ const userTestimonials = [
 ];
 
 const TestimonialCard = styled(Box)(({ theme }) => ({
-  padding: theme.spacing(2.5),
-  backgroundColor: "transparent",
+  padding: "24px",
+  backgroundColor: theme.palette.background.paper,
   border: "1px solid",
-  borderColor: theme.palette.divider,
-  borderRadius: theme.spacing(1),
-  height: "280px",
+  borderColor: theme.palette.grey[200],
+  borderRadius: "8px",
+  height: "100%",
+  minHeight: "240px",
   display: "flex",
   flexDirection: "column",
   justifyContent: "space-between",
-  transition: "all 0.2s ease-in-out",
+  transition: "border-color 0.2s ease",
   "&:hover": {
-    borderColor: theme.palette.primary.light,
-    boxShadow: theme.shadows[2],
+    borderColor: theme.palette.grey[300],
   },
-}));
-
-const CompanyLogo = styled(Typography)(({ theme }) => ({
-  fontSize: "13px",
-  fontWeight: 500,
-  color: theme.palette.text.disabled,
-  letterSpacing: "0.05em",
+  ...(theme.palette.mode === "dark" && {
+    borderColor: theme.palette.grey[700],
+    "&:hover": {
+      borderColor: theme.palette.grey[600],
+    },
+  }),
 }));
 
 export default function Testimonials() {
   return (
     <Container
       id="testimonials"
+      maxWidth="lg"
       sx={{
-        pt: { xs: 4, sm: 8 },
-        pb: { xs: 8, sm: 12 },
-        position: "relative",
+        py: { xs: 8, sm: 10, md: 12 },
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
-        gap: { xs: 3, sm: 5 },
       }}
     >
+      {/* Header Section */}
       <Box
         sx={{
-          width: { sm: "100%", md: "70%" },
           textAlign: "center",
-          mb: 2,
+          mb: { xs: 6, md: 8 },
+          maxWidth: "600px",
         }}
       >
         <Typography
           component="h2"
           variant="h4"
           sx={{
-            color: "text.primary",
             fontWeight: 600,
             mb: 2,
-            fontSize: { xs: "1.75rem", md: "2.125rem" },
+            color: "text.primary",
           }}
         >
           Testimonials
@@ -118,10 +115,7 @@ export default function Testimonials() {
           variant="body1"
           sx={{
             color: "text.secondary",
-            fontSize: "1rem",
             lineHeight: 1.6,
-            maxWidth: "600px",
-            mx: "auto",
           }}
         >
           See what our customers love about our products. Discover how we excel
@@ -130,27 +124,25 @@ export default function Testimonials() {
         </Typography>
       </Box>
 
-      <Grid container spacing={3} sx={{ maxWidth: "1000px", width: "100%" }}>
+      {/* Testimonials Grid */}
+      <Grid container spacing={3} sx={{ maxWidth: "1000px" }}>
         {userTestimonials.map((testimonial, index) => (
           <Grid item xs={12} sm={6} md={4} key={index}>
             <TestimonialCard>
+              {/* Testimonial Text */}
               <Typography
                 variant="body2"
                 sx={{
                   color: "text.primary",
                   lineHeight: 1.5,
-                  fontSize: "0.875rem",
-                  mb: 2,
-                  flexGrow: 1,
-                  display: "-webkit-box",
-                  WebkitLineClamp: 6,
-                  WebkitBoxOrient: "vertical",
-                  overflow: "hidden",
+                  mb: 3,
+                  fontSize: "14px",
                 }}
               >
                 {testimonial.testimonial}
               </Typography>
 
+              {/* Author Info */}
               <Box
                 sx={{
                   display: "flex",
@@ -171,17 +163,17 @@ export default function Testimonials() {
                       sx={{
                         fontWeight: 600,
                         color: "text.primary",
+                        fontSize: "14px",
                         lineHeight: 1.2,
-                        fontSize: "0.875rem",
                       }}
                     >
                       {testimonial.name}
                     </Typography>
                     <Typography
-                      variant="body2"
+                      variant="caption"
                       sx={{
                         color: "text.secondary",
-                        fontSize: "0.75rem",
+                        fontSize: "12px",
                         lineHeight: 1.2,
                       }}
                     >
@@ -190,7 +182,17 @@ export default function Testimonials() {
                   </Box>
                 </Box>
 
-                <CompanyLogo>{testimonial.company}</CompanyLogo>
+                {/* Company Logo */}
+                <Typography
+                  sx={{
+                    fontSize: "12px",
+                    fontWeight: 500,
+                    color: "text.disabled",
+                    letterSpacing: "0.05em",
+                  }}
+                >
+                  {testimonial.company}
+                </Typography>
               </Box>
             </TestimonialCard>
           </Grid>
