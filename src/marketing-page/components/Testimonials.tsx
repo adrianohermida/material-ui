@@ -59,20 +59,19 @@ const userTestimonials = [
 
 const TestimonialCard = styled(Box)(({ theme }) => ({
   border: "1px solid",
-  borderColor: theme.palette.divider,
-  borderRadius: "12px",
-  padding: "24px",
+  borderColor:
+    theme.palette.mode === "light" ? "#e0e0e0" : theme.palette.divider,
+  borderRadius: "8px",
+  padding: "20px",
   height: "100%",
-  minHeight: "280px",
+  minHeight: "260px",
   display: "flex",
   flexDirection: "column",
   justifyContent: "space-between",
   backgroundColor: theme.palette.background.paper,
-  transition: "all 0.2s ease-in-out",
   "&:hover": {
-    borderColor: theme.palette.primary.light,
-    transform: "translateY(-2px)",
-    boxShadow: theme.shadows[4],
+    borderColor:
+      theme.palette.mode === "light" ? "#c0c0c0" : theme.palette.grey[600],
   },
 }));
 
@@ -82,18 +81,18 @@ export default function Testimonials() {
       id="testimonials"
       maxWidth="lg"
       sx={{
-        py: { xs: 8, sm: 12 },
+        py: { xs: 8, sm: 10, md: 12 },
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
       }}
     >
-      {/* Header */}
+      {/* Header Section */}
       <Box
         sx={{
           textAlign: "center",
-          mb: { xs: 6, md: 8 },
-          maxWidth: "640px",
+          mb: { xs: 5, md: 6 },
+          maxWidth: "600px",
         }}
       >
         <Typography
@@ -103,7 +102,7 @@ export default function Testimonials() {
             fontWeight: 600,
             mb: 2,
             color: "text.primary",
-            fontSize: { xs: "2rem", md: "2.125rem" },
+            fontSize: { xs: "1.75rem", md: "2rem" },
           }}
         >
           Testimonials
@@ -113,7 +112,7 @@ export default function Testimonials() {
           sx={{
             color: "text.secondary",
             lineHeight: 1.6,
-            fontSize: "1rem",
+            fontSize: { xs: "0.95rem", md: "1rem" },
           }}
         >
           See what our customers love about our products. Discover how we excel
@@ -122,38 +121,47 @@ export default function Testimonials() {
         </Typography>
       </Box>
 
-      {/* Testimonials Grid */}
-      <Grid container spacing={3} sx={{ maxWidth: "1200px" }}>
+      {/* Testimonials Grid - 2 rows x 3 columns */}
+      <Grid
+        container
+        spacing={{ xs: 2, md: 3 }}
+        sx={{
+          maxWidth: "1000px",
+          width: "100%",
+        }}
+      >
         {userTestimonials.map((testimonial, index) => (
           <Grid item xs={12} sm={6} md={4} key={index}>
             <TestimonialCard>
-              {/* Testimonial Quote */}
+              {/* Testimonial Text */}
               <Typography
                 variant="body2"
                 sx={{
                   color: "text.primary",
-                  lineHeight: 1.6,
+                  lineHeight: 1.5,
                   fontSize: "0.875rem",
-                  mb: 3,
+                  mb: 2,
+                  flexGrow: 1,
                 }}
               >
                 {testimonial.testimonial}
               </Typography>
 
-              {/* Author Section */}
+              {/* Author Information */}
               <Box
                 sx={{
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "space-between",
+                  pt: 1,
                 }}
               >
-                {/* Author Info */}
+                {/* Left side - Avatar and Name */}
                 <Box sx={{ display: "flex", alignItems: "center", gap: 1.5 }}>
                   <Avatar
                     alt={testimonial.name}
                     src={testimonial.avatar}
-                    sx={{ width: 48, height: 48 }}
+                    sx={{ width: 40, height: 40 }}
                   />
                   <Box>
                     <Typography
@@ -162,7 +170,8 @@ export default function Testimonials() {
                         fontWeight: 600,
                         color: "text.primary",
                         fontSize: "0.875rem",
-                        lineHeight: 1.3,
+                        lineHeight: 1.2,
+                        mb: 0.2,
                       }}
                     >
                       {testimonial.name}
@@ -172,7 +181,7 @@ export default function Testimonials() {
                       sx={{
                         color: "text.secondary",
                         fontSize: "0.75rem",
-                        lineHeight: 1.3,
+                        lineHeight: 1.2,
                       }}
                     >
                       {testimonial.occupation}
@@ -180,14 +189,13 @@ export default function Testimonials() {
                   </Box>
                 </Box>
 
-                {/* Company Logo/Name */}
+                {/* Right side - Company */}
                 <Typography
                   sx={{
                     fontSize: "0.75rem",
                     fontWeight: 500,
                     color: "text.disabled",
-                    textTransform: "uppercase",
-                    letterSpacing: "0.1em",
+                    textAlign: "right",
                   }}
                 >
                   {testimonial.company}
