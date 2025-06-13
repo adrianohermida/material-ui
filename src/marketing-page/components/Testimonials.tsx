@@ -57,22 +57,18 @@ const userTestimonials = [
   },
 ];
 
-const TestimonialCard = styled(Box)(({ theme }) => ({
+const TestimonialBox = styled(Box)(({ theme }) => ({
   border: "1px solid",
-  borderColor:
-    theme.palette.mode === "light" ? "#e0e0e0" : theme.palette.divider,
-  borderRadius: "8px",
-  padding: "20px",
+  borderColor: theme.palette.divider,
+  borderRadius: "12px",
+  padding: "24px",
   height: "100%",
-  minHeight: "260px",
+  minHeight: "240px",
   display: "flex",
   flexDirection: "column",
   justifyContent: "space-between",
-  backgroundColor: theme.palette.background.paper,
-  "&:hover": {
-    borderColor:
-      theme.palette.mode === "light" ? "#c0c0c0" : theme.palette.grey[600],
-  },
+  backgroundColor: "transparent",
+  transition: "border-color 0.2s ease",
 }));
 
 export default function Testimonials() {
@@ -81,18 +77,18 @@ export default function Testimonials() {
       id="testimonials"
       maxWidth="lg"
       sx={{
-        py: { xs: 8, sm: 10, md: 12 },
+        py: { xs: 8, sm: 12 },
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
       }}
     >
-      {/* Header Section */}
+      {/* Section Header */}
       <Box
         sx={{
           textAlign: "center",
-          mb: { xs: 5, md: 6 },
-          maxWidth: "600px",
+          mb: 8,
+          maxWidth: "640px",
         }}
       >
         <Typography
@@ -100,9 +96,9 @@ export default function Testimonials() {
           variant="h4"
           sx={{
             fontWeight: 600,
-            mb: 2,
+            mb: 3,
             color: "text.primary",
-            fontSize: { xs: "1.75rem", md: "2rem" },
+            fontSize: "2.125rem",
           }}
         >
           Testimonials
@@ -112,7 +108,7 @@ export default function Testimonials() {
           sx={{
             color: "text.secondary",
             lineHeight: 1.6,
-            fontSize: { xs: "0.95rem", md: "1rem" },
+            fontSize: "1rem",
           }}
         >
           See what our customers love about our products. Discover how we excel
@@ -121,90 +117,81 @@ export default function Testimonials() {
         </Typography>
       </Box>
 
-      {/* Testimonials Grid - 2 rows x 3 columns */}
-      <Grid
-        container
-        spacing={{ xs: 2, md: 3 }}
-        sx={{
-          maxWidth: "1000px",
-          width: "100%",
-        }}
-      >
-        {userTestimonials.map((testimonial, index) => (
-          <Grid item xs={12} sm={6} md={4} key={index}>
-            <TestimonialCard>
-              {/* Testimonial Text */}
-              <Typography
-                variant="body2"
-                sx={{
-                  color: "text.primary",
-                  lineHeight: 1.5,
-                  fontSize: "0.875rem",
-                  mb: 2,
-                  flexGrow: 1,
-                }}
-              >
-                {testimonial.testimonial}
-              </Typography>
-
-              {/* Author Information */}
-              <Box
-                sx={{
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "space-between",
-                  pt: 1,
-                }}
-              >
-                {/* Left side - Avatar and Name */}
-                <Box sx={{ display: "flex", alignItems: "center", gap: 1.5 }}>
-                  <Avatar
-                    alt={testimonial.name}
-                    src={testimonial.avatar}
-                    sx={{ width: 40, height: 40 }}
-                  />
-                  <Box>
-                    <Typography
-                      variant="subtitle2"
-                      sx={{
-                        fontWeight: 600,
-                        color: "text.primary",
-                        fontSize: "0.875rem",
-                        lineHeight: 1.2,
-                        mb: 0.2,
-                      }}
-                    >
-                      {testimonial.name}
-                    </Typography>
-                    <Typography
-                      variant="body2"
-                      sx={{
-                        color: "text.secondary",
-                        fontSize: "0.75rem",
-                        lineHeight: 1.2,
-                      }}
-                    >
-                      {testimonial.occupation}
-                    </Typography>
-                  </Box>
-                </Box>
-
-                {/* Right side - Company */}
+      {/* Testimonials Grid */}
+      <Box sx={{ width: "100%", maxWidth: "1200px" }}>
+        <Grid container spacing={4}>
+          {userTestimonials.map((testimonial, index) => (
+            <Grid item xs={12} sm={6} md={4} key={index}>
+              <TestimonialBox>
+                {/* Testimonial Content */}
                 <Typography
+                  variant="body2"
                   sx={{
-                    fontSize: "0.75rem",
-                    fontWeight: 500,
-                    color: "text.disabled",
-                    textAlign: "right",
+                    color: "text.primary",
+                    lineHeight: 1.6,
+                    fontSize: "14px",
+                    mb: 3,
                   }}
                 >
-                  {testimonial.company}
+                  {testimonial.testimonial}
                 </Typography>
-              </Box>
-            </TestimonialCard>
-          </Grid>
-        ))}
-      </Grid>
+
+                {/* Author Section */}
+                <Box
+                  sx={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "space-between",
+                  }}
+                >
+                  {/* Author Info */}
+                  <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
+                    <Avatar
+                      alt={testimonial.name}
+                      src={testimonial.avatar}
+                      sx={{ width: 40, height: 40 }}
+                    />
+                    <Box>
+                      <Typography
+                        variant="subtitle2"
+                        sx={{
+                          fontWeight: 600,
+                          color: "text.primary",
+                          fontSize: "14px",
+                          lineHeight: 1.3,
+                        }}
+                      >
+                        {testimonial.name}
+                      </Typography>
+                      <Typography
+                        variant="body2"
+                        sx={{
+                          color: "text.secondary",
+                          fontSize: "12px",
+                          lineHeight: 1.3,
+                        }}
+                      >
+                        {testimonial.occupation}
+                      </Typography>
+                    </Box>
+                  </Box>
+
+                  {/* Company */}
+                  <Typography
+                    sx={{
+                      fontSize: "13px",
+                      fontWeight: 500,
+                      color: "text.disabled",
+                    }}
+                  >
+                    {testimonial.company}
+                  </Typography>
+                </Box>
+              </TestimonialBox>
+            </Grid>
+          ))}
+        </Grid>
+      </Box>
     </Container>
   );
 }
