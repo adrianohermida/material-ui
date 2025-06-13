@@ -20,6 +20,7 @@ import Review from "./components/Review";
 import SitemarkIcon from "./components/SitemarkIcon";
 import AppTheme from "../shared-theme/AppTheme";
 import ColorModeIconDropdown from "../shared-theme/ColorModeIconDropdown";
+import BackToHomeButton from "../components/BackToHomeButton";
 
 const steps = ["Shipping address", "Payment details", "Review your order"];
 function getStepContent(step: number) {
@@ -45,6 +46,7 @@ export default function Checkout(props: { disableCustomTheme?: boolean }) {
   return (
     <AppTheme {...props}>
       <CssBaseline enableColorScheme />
+      <BackToHomeButton />
       <Box sx={{ position: "fixed", top: "1rem", right: "1rem" }}>
         <ColorModeIconDropdown />
       </Box>
