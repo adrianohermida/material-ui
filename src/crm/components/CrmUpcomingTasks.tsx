@@ -132,53 +132,43 @@ export default function CrmUpcomingTasks() {
                       inputProps={{ "aria-labelledby": labelId }}
                     />
                   </ListItemIcon>
-                  <ListItemText
-                    id={labelId}
-                    primary={
-                      <Typography
+                  <Box sx={{ flex: 1, minWidth: 0 }}>
+                    <Typography
+                      id={labelId}
+                      sx={{
+                        textDecoration: task.completed
+                          ? "line-through"
+                          : "none",
+                        color: task.completed
+                          ? "text.secondary"
+                          : "text.primary",
+                      }}
+                    >
+                      {task.task}
+                    </Typography>
+                    <Box
+                      sx={{
+                        display: "flex",
+                        alignItems: "center",
+                        gap: 1,
+                        mt: 0.5,
+                      }}
+                    >
+                      <Chip
+                        label={task.priority}
+                        size="small"
+                        color={getPriorityColor(task.priority)}
+                        variant="outlined"
                         sx={{
-                          textDecoration: task.completed
-                            ? "line-through"
-                            : "none",
-                          color: task.completed
-                            ? "text.secondary"
-                            : "text.primary",
+                          height: 20,
+                          "& .MuiChip-label": { px: 1, py: 0 },
                         }}
-                      >
-                        {task.task}
+                      />
+                      <Typography variant="caption" color="text.secondary">
+                        {task.dueDate}
                       </Typography>
-                    }
-                    secondary={
-                      <Stack
-                        direction="row"
-                        alignItems="center"
-                        spacing={1}
-                        sx={{ mt: 0.5 }}
-                        component="span"
-                      >
-                        <Chip
-                          label={task.priority}
-                          size="small"
-                          color={getPriorityColor(task.priority)}
-                          variant="outlined"
-                          sx={{
-                            height: 20,
-                            "& .MuiChip-label": { px: 1, py: 0 },
-                          }}
-                        />
-                        <Typography
-                          variant="caption"
-                          color="text.secondary"
-                          component="span"
-                        >
-                          {task.dueDate}
-                        </Typography>
-                      </Stack>
-                    }
-                    secondaryTypographyProps={{
-                      component: "div",
-                    }}
-                  />
+                    </Box>
+                  </Box>
                 </ListItemButton>
               </ListItem>
             );
