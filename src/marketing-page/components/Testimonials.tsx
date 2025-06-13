@@ -11,46 +11,46 @@ import { styled } from "@mui/material/styles";
 
 const userTestimonials = [
   {
-    avatar: <Avatar alt="Dr. Ana Silva" src="/api/placeholder/40/40" />,
-    name: "Dra. Ana Silva",
-    occupation: "Advogada Criminalista",
+    avatar: <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />,
+    name: "Remy Sharp",
+    occupation: "Senior Engineer",
     testimonial:
-      "O Lawdesk elevou meu escritório a outro patamar — tudo centralizado, moderno e com IA! A automação de documentos me poupa horas todos os dias.",
+      "I absolutely love how versatile this product is! Whether I'm tackling work projects or indulging in my favorite hobbies, it seamlessly adapts to my changing needs. It's become an indispensable part of my daily routine. I can't imagine going back to the way things were before!",
   },
   {
-    avatar: <Avatar alt="Carlos Roberto" src="/api/placeholder/40/40" />,
-    name: "Carlos Roberto",
-    occupation: "Sócio - Silva & Associados",
+    avatar: <Avatar alt="Travis Howard" src="/static/images/avatar/2.jpg" />,
+    name: "Travis Howard",
+    occupation: "Lead Product Designer",
     testimonial:
-      "Desde que adotamos o Lawdesk, cortamos 40% das tarefas manuais no atendimento. O CRM jurídico é simplesmente perfeito para nossa rotina.",
+      "One of the standout features of this product is the exceptional customer support. In my experience, the team behind this product has been quick to respond and incredibly helpful. It's reassuring to know that they stand firmly behind their product.",
   },
   {
-    avatar: <Avatar alt="Mariana Costa" src="/api/placeholder/40/40" />,
-    name: "Mariana Costa",
-    occupation: "Advogada Trabalhista",
+    avatar: <Avatar alt="Cindy Baker" src="/static/images/avatar/3.jpg" />,
+    name: "Cindy Baker",
+    occupation: "CTO",
     testimonial:
-      "Melhor CRM jurídico que já usamos — simples, responsivo e extremamente poderoso. A IA jurídica realmente funciona!",
+      "The level of simplicity and user-friendliness in this product has significantly simplified my life. I appreciate the creators for delivering something that seamlessly fits into my routine.",
   },
   {
-    avatar: <Avatar alt="Dr. João Santos" src="/api/placeholder/40/40" />,
-    name: "Dr. João Santos",
-    occupation: "Diretor Jurídico",
+    avatar: <Avatar alt="Remy Sharp" src="/static/images/avatar/4.jpg" />,
+    name: "Julia Stewart",
+    occupation: "Senior Engineer",
     testimonial:
-      "A gestão financeira integrada transformou nossa operação. Agora temos controle total sobre honorários e receitas.",
+      "I appreciate the attention to detail in the design of this product. The small touches make a big difference, and it's evident that the creators focused on delivering a premium experience.",
   },
   {
-    avatar: <Avatar alt="Patrícia Oliveira" src="/api/placeholder/40/40" />,
-    name: "Patrícia Oliveira",
-    occupation: "Advogada Empresarial",
+    avatar: <Avatar alt="Travis Howard" src="/static/images/avatar/5.jpg" />,
+    name: "John Smith",
+    occupation: "Product Designer",
     testimonial:
-      "O marketplace jurídico abriu novas oportunidades de networking. Encontrei parceiros e modelos que otimizaram meu trabalho.",
+      "I've tried similar products, but this one stands out for its innovative features. It's refreshing to see a product that goes beyond the basics and offers something truly unique.",
   },
   {
-    avatar: <Avatar alt="Dr. Rafael Mendes" src="/api/placeholder/40/40" />,
-    name: "Dr. Rafael Mendes",
-    occupation: "Advogado Imobiliário",
+    avatar: <Avatar alt="Cindy Baker" src="/static/images/avatar/6.jpg" />,
+    name: "Daniel Wolf",
+    occupation: "CDO",
     testimonial:
-      "Documentos inteligentes e assinatura eletrônica integrada aceleraram nossos contratos em 60%. Impressionante!",
+      "The quality of this product exceeded my expectations. It's durable, well-designed, and built to last. I feel like I made a smart investment that will benefit me for a long time.",
   },
 ];
 
@@ -121,16 +121,13 @@ export default function Testimonials() {
           textAlign: { sm: "left", md: "center" },
         }}
       >
-        <Typography
-          component="h2"
-          variant="h4"
-          sx={{ color: "text.primary", fontWeight: 700 }}
-        >
-          O que dizem nossos usuários
+        <Typography component="h2" variant="h4" sx={{ color: "text.primary" }}>
+          Testimonials
         </Typography>
         <Typography variant="body1" sx={{ color: "text.secondary" }}>
-          Mais de 5.000 advogados e escritórios já confiam no Lawdesk para
-          modernizar e automatizar sua prática jurídica.
+          See what our customers love about our products. Discover how we excel
+          in efficiency, durability, and satisfaction. Join us for quality,
+          innovation, and reliable support.
         </Typography>
       </Box>
       <Grid container spacing={2}>
@@ -145,7 +142,7 @@ export default function Testimonials() {
             >
               <StyledCardContent>
                 <Typography variant="body2" sx={{ color: "text.secondary" }}>
-                  "{testimonial.testimonial}"
+                  {testimonial.testimonial}
                 </Typography>
               </StyledCardContent>
               <Box
