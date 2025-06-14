@@ -1,10 +1,41 @@
 <!doctype html>
-<html lang="en">
+<html lang="pt-BR">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + Material UI + TS + Tailwind CSS</title>
+
+    <!-- SEO Meta Tags -->
+    <title>Lawdesk - CRM Jurídico Inteligente</title>
+    <meta
+      name="description"
+      content="O primeiro sistema jurídico completo com inteligência artificial integrada e automação de ponta a ponta. Gerencie processos, clientes e honorários em uma plataforma moderna."
+    />
+    <meta
+      name="keywords"
+      content="CRM jurídico, software jurídico, gestão de escritório, advocacia, inteligência artificial jurídica"
+    />
+    <meta name="author" content="Lawdesk" />
+
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Lawdesk - CRM Jurídico Inteligente" />
+    <meta
+      property="og:description"
+      content="O primeiro sistema jurídico completo com inteligência artificial integrada e automação de ponta a ponta."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://lawdesk.com.br/" />
+    <meta property="og:site_name" content="Lawdesk" />
+    <link rel="canonical" href="https://lawdesk.com.br/" />
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Lawdesk - CRM Jurídico Inteligente" />
+    <meta
+      name="twitter:description"
+      content="O primeiro sistema jurídico completo com inteligência artificial integrada e automação de ponta a ponta."
+    />
+
     <!-- Fonts to support Material Design -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -12,6 +43,28 @@
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap"
     />
+
+    <!-- GitHub Pages SPA redirect script -->
+    <script type="text/javascript">
+      // Single Page Apps for GitHub Pages
+      // https://github.com/rafgraph/spa-github-pages
+      (function (l) {
+        if (l.search[1] === "/") {
+          var decoded = l.search
+            .slice(1)
+            .split("&")
+            .map(function (s) {
+              return s.replace(/~and~/g, "&");
+            })
+            .join("?");
+          window.history.replaceState(
+            null,
+            null,
+            l.pathname.slice(0, -1) + decoded + l.hash,
+          );
+        }
+      })(window.location);
+    </script>
   </head>
   <body>
     <div id="root"></div>

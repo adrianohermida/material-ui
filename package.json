@@ -3,11 +3,21 @@
   "private": true,
   "version": "7.0.0",
   "type": "module",
+  "homepage": "https://lawdesk.com.br/",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
+    "build": "vite build",
+    "build:types": "tsc -b",
+    "build:github": "vite build --base=/ && cp public/.nojekyll dist/",
+    "build:pages": "node scripts/build-github-pages.js",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "deploy": "npm run build:github",
+    "deploy:verify": "node scripts/verify-deployment.js",
+    "deploy:setup": "node scripts/build-github-pages.js && npm run deploy:verify",
+    "configure:github-pages": "node scripts/configure-github-pages.js",
+    "verify:github-pages": "node scripts/verify-github-pages.js",
+    "verify:dns": "node scripts/verify-dns.js"
   },
   "dependencies": {
     "@emotion/react": "^11.14.0",
