@@ -122,7 +122,7 @@ export default function Footer() {
               <Link
                 color="text.secondary"
                 variant="body2"
-                onClick={() => handleNavigation("/templates")}
+                onClick={() => handleNavigation("/crm")}
                 sx={{ cursor: "pointer" }}
               >
                 Demonstração
@@ -130,10 +130,10 @@ export default function Footer() {
               <Link
                 color="text.secondary"
                 variant="body2"
-                onClick={() => handleNavigation("/crm")}
+                onClick={() => handleNavigation("/templates")}
                 sx={{ cursor: "pointer" }}
               >
-                Comunidade
+                Templates
               </Link>
             </Box>
 
