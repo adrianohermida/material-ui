@@ -44,7 +44,7 @@ export default function Hero() {
   };
 
   const handleViewDemo = () => {
-    navigate("/templates");
+    navigate("/crm");
   };
 
   return (
