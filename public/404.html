@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <title>Lawdesk - CRM Jurídico Inteligente</title>
+    <meta
+      name="description"
+      content="O primeiro sistema jurídico completo com inteligência artificial integrada e automação de ponta a ponta."
+    />
+    <link rel="canonical" href="https://lawdesk.com.br/" />
+
+    <!-- Custom Domain SPA redirect script -->
+    <script type="text/javascript">
+      // Single Page Apps for GitHub Pages with Custom Domain
+      // This script handles client-side routing for custom domains
+
+      var pathSegmentsToKeep = 0;
+
+      var l = window.location;
+      l.replace(
+        l.protocol +
+          "//" +
+          l.hostname +
+          (l.port ? ":" + l.port : "") +
+          l.pathname
+            .split("/")
+            .slice(0, 1 + pathSegmentsToKeep)
+            .join("/") +
+          "/?/" +
+          l.pathname
+            .slice(1)
+            .split("/")
+            .slice(pathSegmentsToKeep)
+            .join("/")
+            .replace(/&/g, "~and~") +
+          (l.search ? "&" + l.search.slice(1).replace(/&/g, "~and~") : "") +
+          l.hash,
+      );
+    </script>
+  </head>
+  <body>
+    <!-- Custom Domain 404 redirect for SPA -->
+    <div style="display: none">
+      <h1>Redirecionando...</h1>
+      <p>Você está sendo redirecionado para a página principal do Lawdesk.</p>
+    </div>
+  </body>
+</html>
