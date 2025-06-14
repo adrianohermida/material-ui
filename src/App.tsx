@@ -67,8 +67,6 @@ export default function App() {
 
         {/* Páginas principais conforme especificação */}
         <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/analytics" element={<Dashboard />} />
-        <Route path="/marketing" element={<MarketingPage />} />
         <Route path="/blog" element={<Blog />} />
         <Route path="/checkout" element={<Checkout />} />
 
