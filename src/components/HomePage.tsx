@@ -59,7 +59,7 @@ const pages: PageInfo[] = [
     title: "Marketing Page",
     description:
       "Modern marketing landing page with hero section, features, testimonials, pricing, and FAQ.",
-    path: "/marketing",
+    path: "/",
     icon: <MarketingIcon />,
     category: "Marketing",
     featured: true,
