@@ -115,7 +115,13 @@ const Tagline = styled(Typography)(({ theme }) => ({
 
 export default function SitemarkIcon() {
   const handleClick = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    // If we're on the home page, scroll to top
+    if (window.location.pathname === "/") {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    } else {
+      // If we're on another page, navigate to home
+      window.location.href = "/";
+    }
   };
 
   return (
