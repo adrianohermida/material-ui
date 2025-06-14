@@ -112,17 +112,26 @@ export default function SignUp(props: { disableCustomTheme?: boolean }) {
   };
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    if (nameError || emailError || passwordError) {
-      event.preventDefault();
+    event.preventDefault();
+
+    // Validate inputs first
+    if (!validateInputs()) {
       return;
     }
+
     const data = new FormData(event.currentTarget);
-    console.log({
+    const userData = {
       name: data.get("name"),
-      lastName: data.get("lastName"),
       email: data.get("email"),
       password: data.get("password"),
-    });
+    };
+
+    console.log("Registration attempt:", userData);
+
+    // Simulate registration success and redirect to CRM dashboard
+    setTimeout(() => {
+      navigate("/crm");
+    }, 500);
   };
 
   return (
