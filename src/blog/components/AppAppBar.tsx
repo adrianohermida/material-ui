@@ -92,10 +92,15 @@ export default function AppAppBar() {
               alignItems: "center",
             }}
           >
-            <Button color="primary" variant="text" size="small">
+            <Button color="primary" variant="text" size="small" href="/sign-in">
               Sign in
             </Button>
-            <Button color="primary" variant="contained" size="small">
+            <Button
+              color="primary"
+              variant="contained"
+              size="small"
+              href="/sign-up"
+            >
               Sign up
             </Button>
             <ColorModeIconDropdown />
