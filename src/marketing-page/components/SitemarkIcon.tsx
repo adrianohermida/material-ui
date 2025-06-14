@@ -4,7 +4,7 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import SvgIcon from "@mui/material/SvgIcon";
 
-// Ícone da balança de justiça estilizado
+// Justice scale icon with gradient
 function LawdeskIcon(props: any) {
   return (
     <SvgIcon {...props} viewBox="0 0 24 24">
@@ -24,17 +24,18 @@ function LawdeskIcon(props: any) {
           />
         </linearGradient>
       </defs>
-      {/* Base da balança */}
+
+      {/* Base */}
       <rect x="11" y="18" width="2" height="4" fill="url(#lawdeskGradient)" />
       <rect x="8" y="21" width="8" height="1" fill="url(#lawdeskGradient)" />
 
-      {/* Haste principal */}
+      {/* Main pole */}
       <rect x="11.5" y="8" width="1" height="10" fill="url(#lawdeskGradient)" />
 
-      {/* Barra horizontal */}
+      {/* Horizontal bar */}
       <rect x="6" y="8" width="12" height="1" fill="url(#lawdeskGradient)" />
 
-      {/* Prato esquerdo */}
+      {/* Left scale */}
       <path
         d="M6 9 L10 9 L9 12 L7 12 Z"
         fill="url(#lawdeskGradient)"
@@ -48,7 +49,7 @@ function LawdeskIcon(props: any) {
         fill="none"
       />
 
-      {/* Prato direito */}
+      {/* Right scale */}
       <path
         d="M14 9 L18 9 L17 12 L15 12 Z"
         fill="url(#lawdeskGradient)"
@@ -62,7 +63,7 @@ function LawdeskIcon(props: any) {
         fill="none"
       />
 
-      {/* Detalhes superiores */}
+      {/* Top details */}
       <circle
         cx="12"
         cy="6"
@@ -79,27 +80,36 @@ function LawdeskIcon(props: any) {
   );
 }
 
-const StyledBox = styled(Box)(({ theme }) => ({
+const LogoContainer = styled(Box)(({ theme }) => ({
   display: "flex",
   alignItems: "center",
   cursor: "pointer",
-  "& .logo-text": {
-    background: "linear-gradient(45deg, #1976d2 30%, #42a5f5 70%, #4caf50 90%)",
-    backgroundClip: "text",
-    WebkitBackgroundClip: "text",
-    WebkitTextFillColor: "transparent",
-    fontWeight: 700,
-    fontSize: "1.5rem",
-    marginLeft: theme.spacing(1),
-    fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif',
+  transition: "transform 0.2s ease-in-out",
+  "&:hover": {
+    transform: "scale(1.02)",
   },
-  "& .logo-tagline": {
-    color: theme.palette.text.secondary,
-    fontSize: "0.75rem",
-    fontWeight: 500,
-    marginLeft: theme.spacing(0.5),
-    marginTop: theme.spacing(0.2),
-    display: { xs: "none", sm: "block" },
+}));
+
+const LogoText = styled(Typography)(({ theme }) => ({
+  background: "linear-gradient(45deg, #1976d2 30%, #42a5f5 70%, #4caf50 90%)",
+  backgroundClip: "text",
+  WebkitBackgroundClip: "text",
+  WebkitTextFillColor: "transparent",
+  fontWeight: 700,
+  fontSize: "1.5rem",
+  marginLeft: theme.spacing(1),
+  fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif',
+  letterSpacing: "-0.02em",
+}));
+
+const Tagline = styled(Typography)(({ theme }) => ({
+  color: theme.palette.text.secondary,
+  fontSize: "0.75rem",
+  fontWeight: 500,
+  marginLeft: theme.spacing(0.5),
+  marginTop: theme.spacing(0.2),
+  [theme.breakpoints.down("md")]: {
+    display: "none",
   },
 }));
 
@@ -109,7 +119,7 @@ export default function SitemarkIcon() {
   };
 
   return (
-    <StyledBox onClick={handleClick}>
+    <LogoContainer onClick={handleClick}>
       <LawdeskIcon
         sx={{
           width: 32,
@@ -118,17 +128,9 @@ export default function SitemarkIcon() {
         }}
       />
       <Box sx={{ display: "flex", flexDirection: "column" }}>
-        <Typography className="logo-text" component="span">
-          Lawdesk
-        </Typography>
-        <Typography
-          className="logo-tagline"
-          component="span"
-          sx={{ display: { xs: "none", md: "block" } }}
-        >
-          CRM Jurídico Inteligente
-        </Typography>
+        <LogoText component="span">Lawdesk</LogoText>
+        <Tagline component="span">CRM Jurídico Inteligente</Tagline>
       </Box>
-    </StyledBox>
+    </LogoContainer>
   );
 }
