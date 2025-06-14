@@ -202,8 +202,8 @@ export default function Pricing() {
               <CardActions>
                 <Button
                   fullWidth
-                  variant={tier.buttonVariant as "outlined" | "contained"}
-                  color={tier.buttonColor as "primary" | "secondary"}
+                  variant={tier.buttonVariant}
+                  color={tier.buttonColor}
                 >
                   {tier.buttonText}
                 </Button>
