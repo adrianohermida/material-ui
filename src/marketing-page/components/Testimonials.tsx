@@ -103,7 +103,7 @@ export default function Testimonials() {
       </Box>
 
       {/* Testimonials Grid */}
-      <Grid container spacing={3} sx={{ maxWidth: "1000px" }}>
+      <Grid ontainer spacing={3} sx={{ maxWidth: "1000px" }}>
         {userTestimonials.map((testimonial, index) => (
           <Grid item xs={12} sm={6} md={4} key={index}>
             <Box
@@ -142,8 +142,7 @@ export default function Testimonials() {
                 }}
               >
                 {/* Left - Avatar and Info */}
-                <Box sx={{ display: "flex", alignItems: "center", gap: 1.5 }}>
-                  <Avatar
+                <Box sx={{ display: "flex", alignItems: "center", gap: 1.5 }}                  <Avatar
                     alt={testimonial.name}
                     src={testimonial.avatar}
                     sx={{ width: 40, height: 40 }}
